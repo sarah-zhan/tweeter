@@ -23,3 +23,27 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+
+
+html {
+  font-family: 'Source-Sans-Pro', 'sans-serif';
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+}
+
+nav {
+  font-family: 'Bungee';
+}
+
+.main-container{
+  display: flex;
+  width: 90%;
+  margin: 1em auto;
+  flex-direction: column;
+}
+ 

@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  height: 550px;
+  text-align: center;
+  /* position: fixed; */
+  background-color: #cc7a00;
+  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  z-index: -1;
+  width: 100%;
+  flex-direction: column;
+}
+
+.header-container {
+  width: 100%;
+
+}
+
+#header-image {
+  margin-top:90px;
+}
+
+.header-container h2 {
+  color: white;
+  margin: 0;
+  font-family: sans-serif;
+}
