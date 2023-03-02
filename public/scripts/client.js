@@ -30,6 +30,20 @@ const data = [
 ];
 
 
+const $tweetForm = $('form');
+$tweetForm.on('submit', (event) => {
+  event.preventDefault();
+  const urlencoded = $tweetForm.serialize();
+
+  $.ajax({
+    method: 'POST',
+    url: '/tweets',
+    data: urlencoded,
+    success: (tweets) => {
+      renderTweets(tweets);
+    }
+  });
+});
 
 const renderTweets = function(tweets) {
   // loops through tweets
@@ -37,7 +51,6 @@ const renderTweets = function(tweets) {
   for (const tweet of tweets) {
     //  calls createTweetElement for each tweet
     const $tweetContent = createTweetElement(tweet);
-    console.log(tweet);
     // takes return value and appends it to the tweets container
     $tweetsContainer.prepend($tweetContent);
   }
