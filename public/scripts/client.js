@@ -1,74 +1,7 @@
-
 /* Client-side JS logic goes here
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ];
-
-//post the form
-const $tweetForm = $('form');
-$tweetForm.on('submit', (event) => {
-  event.preventDefault();
-  const urlencoded = $tweetForm.serialize();
-
-  $.ajax({
-    method: 'POST',
-    url: '/tweets',
-    data: urlencoded,
-    success: (tweets) => {
-      renderTweets(tweets);
-    }
-  });
-});
-
-const $tweetsContainer = $('.tweets-container');
-
-const loadtweets = () => {
-  $.ajax({
-    method: 'GET',
-    url: '/tweets',
-    success: (tweets) => {
-      $tweetsContainer.empty();
-      renderTweets(tweets);
-    }
-  });
-};
-
-loadtweets();
-
-const renderTweets = function(tweets) {
-  // loops through tweets
-  for (const tweet of tweets) {
-    //  calls createTweetElement for each tweet
-    const $tweetContent = createTweetElement(tweet);
-    // takes return value and appends it to the tweets container
-    $tweetsContainer.prepend($tweetContent);
-  }
-};
 
 const createTweetElement = function(tweet) {
   let $tweet = $(`
@@ -83,10 +16,10 @@ const createTweetElement = function(tweet) {
             <p>${tweet.user.handle}</p>
           </div>
         </header>
-        <textarea class="all-tweets" name="" id=""></textarea>
+        <p>${tweet.content.text}</p>
         <footer class="tweets-footer">
           <div class="days">
-            <p>${1461115000000 - tweet.created_at} days ago</p>
+            <p id="time" class="timeago">${timeago.format(tweet.created_at)}</p>
           </div>
           <div class="tweets-footer-icon">
             <i class="fa-solid fa-flag footer-icon"></i>
@@ -99,5 +32,55 @@ const createTweetElement = function(tweet) {
   `);
   return $tweet;
 };
+
+const renderTweets = function(tweets) {
+  const $tweetsContainer = $('.tweets-container');
+  $tweetsContainer.empty();
+  // loops through tweets
+  for (const tweet of tweets) {
+    //  calls createTweetElement for each tweet
+    const $tweetContent = createTweetElement(tweet);
+    // takes return value and appends it to the tweets container
+    $tweetsContainer.prepend($tweetContent);
+  }
+};
+
+const loadTweets = () => {
+  $.ajax({
+    method: 'GET',
+    url: '/tweets',
+    success: (tweets) => {
+      renderTweets(tweets);
+    }
+  });
+};
+
+//post the form
+const $tweetForm = $('form');
+$tweetForm.on('submit', (event) => {
+  event.preventDefault();
+  const urlencoded = $tweetForm.serialize();
+
+  $.ajax({
+    method: 'POST',
+    url: '/tweets',
+    data: urlencoded,
+    success: () => {
+      $('#tweet-text').val('');
+      $('.counter').text(140);
+      loadTweets();
+    }
+  });
+});
+
+
+
+
+loadTweets();
+
+
+
+
+
 
 
