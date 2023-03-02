@@ -1,0 +1,10 @@
+.alert {
+  color: red;
+  display: flex;
+  justify-content: center;
+  /* border-style: dashed; */
+  
+}
+
+
+

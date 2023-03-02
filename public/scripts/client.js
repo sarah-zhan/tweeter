@@ -3,6 +3,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
 const createTweetElement = function(tweet) {
   let $tweet = $(`
     <section class="tweets-container">
@@ -16,7 +17,7 @@ const createTweetElement = function(tweet) {
             <p>${tweet.user.handle}</p>
           </div>
         </header>
-        <textarea class="" name="text" id="tweet-text">${tweet.content.text}</textarea>
+        <textarea name="text" id="tweet-text" >${tweet.content.text}</textarea>
         <footer class="tweets-footer">
           <div class="days">
             <p id="time" class="timeago">${timeago.format(tweet.created_at)}</p>
@@ -35,7 +36,10 @@ const createTweetElement = function(tweet) {
 
 const renderTweets = function(tweets) {
   const $tweetsContainer = $('.tweets-container');
+  const $alertMessage = $('#alert');
+  //clear tweetsContainer and message
   $tweetsContainer.empty();
+  $alertMessage.empty();
   // loops through tweets
   for (const tweet of tweets) {
     //  calls createTweetElement for each tweet
@@ -55,24 +59,24 @@ const loadTweets = () => {
   });
 };
 
+
 //post the form
 const $tweetForm = $('form');
 $tweetForm.on('submit', (event) => {
   event.preventDefault();
   const urlencoded = $tweetForm.serialize();
-  console.log(typeof urlencoded);
+  const text = $("#tweet-text").val();
 
-  //not working yet!!! when the message is empty
-  if (urlencoded.length === 0) {
-    alert('You cannot send empty message!');
+  if (text.length < 1) {
+    $('#alert').text('You cannot send empty message!');
     return;
   }
-  if (urlencoded.includes('script')) {  //maybe ok to do this?
-    alert('It is not allowed.');
+  if (text.includes('script')) {
+    $('#alert').text('It is not allowed.');
     return;
   }
-  if (urlencoded.length > 140) {
-    alert('Your tweet is too long. Max length is 140.');
+  if (text.length > 140) {
+    $('#alert').text('Your tweet is too long. Max length is 140.');
     return;
   }
 
@@ -89,13 +93,8 @@ $tweetForm.on('submit', (event) => {
 });
 
 
-
-
 loadTweets();
 
 
-
-// cannot pass this test
-//<script>$("body").empty();</script>
 
 
