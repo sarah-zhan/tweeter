@@ -33,6 +33,7 @@ textarea {
   border-bottom-color: black;
   background-color: #f4f1ec;
   resize: none;
+  height: 5em;
 }
 
 textarea:focus {

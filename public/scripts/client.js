@@ -16,7 +16,7 @@ const createTweetElement = function(tweet) {
             <p>${tweet.user.handle}</p>
           </div>
         </header>
-        <p>${tweet.content.text}</p>
+        <textarea class="" name="text" id="tweet-text">${tweet.content.text}</textarea>
         <footer class="tweets-footer">
           <div class="days">
             <p id="time" class="timeago">${timeago.format(tweet.created_at)}</p>
@@ -60,6 +60,21 @@ const $tweetForm = $('form');
 $tweetForm.on('submit', (event) => {
   event.preventDefault();
   const urlencoded = $tweetForm.serialize();
+  console.log(typeof urlencoded);
+
+  //not working yet!!! when the message is empty
+  if (urlencoded.length === 0) {
+    alert('You cannot send empty message!');
+    return;
+  }
+  if (urlencoded.includes('script')) {  //maybe ok to do this?
+    alert('It is not allowed.');
+    return;
+  }
+  if (urlencoded.length > 140) {
+    alert('Your tweet is too long. Max length is 140.');
+    return;
+  }
 
   $.ajax({
     method: 'POST',
@@ -80,7 +95,7 @@ loadTweets();
 
 
 
-
-
+// cannot pass this test
+//<script>$("body").empty();</script>
 
 
