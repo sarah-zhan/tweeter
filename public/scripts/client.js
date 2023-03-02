@@ -4,32 +4,32 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png"
+//       ,
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd" },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   }
+// ];
 
-
+//post the form
 const $tweetForm = $('form');
 $tweetForm.on('submit', (event) => {
   event.preventDefault();
@@ -45,9 +45,23 @@ $tweetForm.on('submit', (event) => {
   });
 });
 
+const $tweetsContainer = $('.tweets-container');
+
+const loadtweets = () => {
+  $.ajax({
+    method: 'GET',
+    url: '/tweets',
+    success: (tweets) => {
+      $tweetsContainer.empty();
+      renderTweets(tweets);
+    }
+  });
+};
+
+loadtweets();
+
 const renderTweets = function(tweets) {
   // loops through tweets
-  const $tweetsContainer = $('.tweets-container');
   for (const tweet of tweets) {
     //  calls createTweetElement for each tweet
     const $tweetContent = createTweetElement(tweet);
@@ -86,5 +100,4 @@ const createTweetElement = function(tweet) {
   return $tweet;
 };
 
-renderTweets(data);
 
