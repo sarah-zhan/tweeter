@@ -21,13 +21,12 @@
 
 .tweets-header-left {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .fa-user {
   margin-top: 0.5em;
-  margin-right: 1em;
-  color: gray;
+  margin-right: 1.5em;
 }
 
 /* .tweets-header-right p:hover{
@@ -60,4 +59,9 @@
 
 .red {
   color: red;
+}
+
+.name {
+  margin-left: 1em;
+  margin-top: 1em;
 }
