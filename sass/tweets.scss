@@ -1,7 +1,9 @@
+@use 'variables';
+
 .tweets-container {
   display: flex;
   flex-direction: column;
-  font-family: sans-serif;
+  font-family: variables.$page-font;
   font-weight: 500;
   margin-top: 3em;
   border-style: solid;
@@ -11,6 +13,7 @@
 
 .tweets-container:hover {
   box-shadow: 10px 10px gray;
+  
 }
 
 .tweets-header {
@@ -31,6 +34,7 @@
 .tweets-footer {
   display: flex;
   justify-content: space-between;
+  
 }
 
 .tweets-footer-icon {
@@ -38,12 +42,12 @@
 }
 
 .footer-icon {
-  color: #4056A1;
+  color: variables.$nav-blue;
   margin-top: 1em;
 }
 
 .footer-icon:hover {
-  color: #cc7a00;
+  color: variables.$header-color;
 }
 
 .red {

@@ -1,0 +1,47 @@
+@use 'variables';
+
+nav {
+    font-family: variables.$bungee-font;
+    height: 120px;
+    display: flex;
+    width: 100%; 
+    background-color: variables.$header-color;
+    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+    justify-content: space-between;
+    position: fixed;
+    
+}
+
+.nav-write-a-new-trweet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+span#nav-logo {
+    color: #FFFFFF;
+    margin: 1.5em;
+    height: auto;
+    align-items: center;
+    font-size:xx-large;
+}
+
+span#nav-slogan {
+  color: #FFFFFF;
+  font-family: variables.$page-font;
+  margin-right: 1.5em;
+  font-size: larger;
+}
+
+i {
+  color: red;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1024px){
+  nav {
+    background-color: variables.$nav-blue;
+    background-image: none;
+  }
+
+}

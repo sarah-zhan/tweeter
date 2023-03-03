@@ -1,14 +1,12 @@
-
 nav {
-    font-family: 'Bungee';
-    height: 120px;
-    display: flex;
-    width: 100%; 
-    background-color: #cc7a00;
-    background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
-    justify-content: space-between;
-    position: fixed;
-    
+  font-family: "Bungee";
+  height: 120px;
+  display: flex;
+  width: 100%;
+  background-color: #cc7a00;
+  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  justify-content: space-between;
+  position: fixed;
 }
 
 .nav-write-a-new-trweet {
@@ -18,11 +16,11 @@ nav {
 }
 
 span#nav-logo {
-    color: #FFFFFF;
-    margin: 1.5em;
-    height: auto;
-    align-items: center;
-    font-size:xx-large;
+  color: #FFFFFF;
+  margin: 1.5em;
+  height: auto;
+  align-items: center;
+  font-size: xx-large;
 }
 
 span#nav-slogan {
@@ -37,10 +35,9 @@ i {
   text-align: center;
 }
 
-@media only screen and (min-width: 1024px){
+@media only screen and (min-width: 1024px) {
   nav {
     background-color: #4056A1;
     background-image: none;
   }
-
 }

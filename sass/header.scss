@@ -1,8 +1,12 @@
+@use 'variables';
+
+
+
 .header {
   display: flex;
   height: 550px;
   text-align: center;
-  background-color: #cc7a00;
+  background-color: variables.$header-color;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
   z-index: -1;
   flex-direction: column;
@@ -10,22 +14,24 @@
 
 .header-container {
   width: 100%;
-}
-.header-container h2 {
+  h2 {
   color: white;
   margin: 0;
-  font-family: sans-serif;
+  font-family: variables.$page-font;
+}
 }
 
 #header-image {
-  margin-top: 90px;
+  margin-top:90px;
 }
 
-@media only screen and (min-width: 1024px) {
+
+@media only screen and (min-width: 1024px){
   .header {
     height: 400px;
   }
   #header-image {
     margin-top: 25px;
   }
+
 }

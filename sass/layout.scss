@@ -3,10 +3,12 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
+@use 'variables';
+
 html {
   box-sizing: border-box;
 }
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -14,6 +16,7 @@ html {
 /*
  * Global layout stuff
  */
+
 body {
   color: #545149;
   background-color: #f4f1ec;
@@ -23,53 +26,65 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
 html {
-  font-family: "Source-Sans-Pro", sans-serif;
+  font-family: variables.$source-sans-font, variables.$page-font;
 }
+
 
 nav {
-  font-family: "Bungee";
+  font-family: variables.$bungee-font;
 }
 
-.main-container {
+.main-container{
   display: flex;
   width: 90%;
   margin: 1em auto;
   flex-direction: column;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px){
   body {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content:flex-start;
   }
   .header {
     width: 30%;
     margin-top: 250px;
     margin-left: 30px;
+
   }
-  .main-container {
+
+ .main-container {
     width: 65%;
     margin-top: 10rem;
     margin-left: 10rem;
     margin-right: 3rem;
   }
+
   #header-image {
     margin-top: 40px;
   }
+
 }
-@media only screen and (max-width: 1023px) and (min-width: 585px) {
+
+
+@media only screen and (max-width: 1023px) and (min-width: 585px){
   body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content:flex-start;
   }
   .header {
-    width: 100%;
+    width: 100%; 
   }
-  .main-container {
+
+ .main-container {
     width: 100%;
     padding: 30px;
   }
+
+  
 }
+ 
