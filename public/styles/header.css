@@ -6,7 +6,6 @@
   background-color: #cc7a00;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
   z-index: -1;
-  width: 100%;
   flex-direction: column;
 }
 
@@ -23,4 +22,14 @@
   color: white;
   margin: 0;
   font-family: sans-serif;
+}
+
+@media only screen and (min-width: 1024px){
+  .header {
+    height: 400px;
+  }
+  #header-image {
+    margin-top: 25px;
+  }
+
 }

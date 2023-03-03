@@ -30,11 +30,6 @@ html {
   font-family: 'Source-Sans-Pro', 'sans-serif';
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content:flex-start;
-}
 
 nav {
   font-family: 'Bungee';
@@ -45,5 +40,50 @@ nav {
   width: 90%;
   margin: 1em auto;
   flex-direction: column;
+}
+
+@media only screen and (min-width: 1024px){
+  body {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+  }
+  .header {
+    width: 30%;
+    margin-top: 250px;
+    margin-left: 30px;
+
+  }
+
+ .main-container {
+    width: 65%;
+    margin-top: 10rem;
+    margin-left: 10rem;
+    margin-right: 3rem;
+  }
+
+  #header-image {
+    margin-top: 40px;
+  }
+
+}
+
+
+@media only screen and (max-width: 1023px) and (min-width: 585px){
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+  }
+  .header {
+    width: 100%; 
+  }
+
+ .main-container {
+    width: 100%;
+    padding: 30px;
+  }
+
+  
 }
  
